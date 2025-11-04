@@ -37,7 +37,18 @@ public class SalesItemTest
     public void tearDown()
     {
     }
-
+    
+    @Test
+    public void duplicateAuthorIsRejected() {
+        SalesItem item = new SalesItem("Keyboard", 5000);
+        assertTrue(item.addComment("Alex", "Good keyboard", 4));
+        assertFalse(item.addComment("Alex", "Another opinion", 5));
+        assertEquals(1, item.getNumberOfComments());
+    
+    
+    }
+    
+    
     /**
      * Test that a comment can be added, and that the comment count is correct afterwards.
      */
@@ -49,6 +60,15 @@ public class SalesItemTest
         assertEquals(1, salesIte1.getNumberOfComments());
     }
 
+    @Test
+    public void ratingsJustOutsideAreRejected() {
+    SalesItem item = new SalesItem("Keyboard", 5000);
+    assertFalse(item.addComment("A", "bad rating low", 0));
+    assertFalse(item.addComment("B", "bad rating high", 6));
+    assertEquals(0, item.getNumberOfComments());
+    }
+    
+    
     /**
      * Test that a comment using an illegal rating value is rejected.
      */
