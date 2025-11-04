@@ -16,3 +16,7 @@ a test class that demonstrates some of the testing functionality. Testing is fur
 discussed in the book.
 
 NOTE: There are several serious errors to be found in these classes.
+
+
+14)the public class CommentTest ,which is the constructer. and @BeforeEach public void setUp()
+ and @AfterEach  public void tearDown()
