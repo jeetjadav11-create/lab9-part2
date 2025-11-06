@@ -27,12 +27,41 @@ public class SalesItemTest
     public void setUp()
     {
     }
-
+    
+    @Test
+    public void testFindMostHelpfulComment(){
+    SalesItem item = new SalesItem("Keyboard", 5000);
+    
+    item.addComment("Alex", "Good ", 4);
+    item.addComment("Ben", "Okay", 3);
+    item.addComment("Cara", "Very goog", 5);
+    
+    item.upvoteComment(1);
+    item.upvoteComment(2);
+    item.upvoteComment(2);
+    
+    Comment mostHelpful = item.findMostHelpfulComment();
+    assertEquals("Cara", mostHelpful.getAuthor());
+    
+    
+    }
+    
+    @Test
+    public void mostHelpfulCommentIsNullWhenNOComments(){
+    SalesItem item = new SalesItem("Keyboard", 5000);
+    
+    Comment mostHelpful = item.findMostHelpfulComment();
+    
+    assertNull(mostHelpful);
+    
+    
+    }    
+    
     /**
      * Tears down the test fixture.
      *
      * Called after every test case method.
-     */
+      */
     @After
     public void tearDown()
     {

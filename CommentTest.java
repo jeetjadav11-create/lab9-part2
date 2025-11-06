@@ -40,6 +40,7 @@ public class CommentTest
     {
     }
     
+    
     @Test
     public void authorAndRatingStoredCorrectly() {
         Comment c = new Comment("Alex", "Nice product", 4);
